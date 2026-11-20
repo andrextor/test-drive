@@ -24,6 +24,7 @@ Study notes for the theory classes of a driving licence course. The owner pastes
 
 - Astro (static output) + pnpm, deployed on Vercel. Single page `src/pages/index.astro`; lessons are a content collection (`src/content.config.ts`).
 - Tailwind CSS v4 (+ typography plugin for the Markdown) and Lexend font. Avoid adding other dependencies.
-- The only client JS is the search (CSS Custom Highlight API) and closing the mobile menu (native `popover`).
+- The only client JS is the search (CSS Custom Highlight API), closing the mobile menu (native `popover`) and the print button (`print()`).
+- Print/PDF: `@media print` in `global.css` (dark mode is screen-only, each topic and class starts a new page, tables and callouts never split).
 - Biome does not touch Markdown (it breaks the frontmatter).
 - Biome for lint/format, 2-space indentation, TypeScript strict.

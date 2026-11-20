@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Dark mode only on screen, so printing/PDF always uses the light notebook look. */
+@custom-variant dark (@media screen and (prefers-color-scheme: dark));
+
 @theme {
   --font-sans: "Lexend Variable", ui-sans-serif, system-ui, sans-serif;
 }
@@ -20,7 +23,7 @@
   --exam-label: var(--color-amber-700);
 }
 
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
   :root {
     --paper-line: color-mix(in oklab, var(--color-stone-700) 30%, transparent);
     --note-line: var(--color-stone-800);
@@ -187,4 +190,53 @@ body {
 ::highlight(search-current) {
   background-color: var(--color-orange-400);
   color: var(--color-stone-900);
+}
+
+@page {
+  margin: 14mm 12mm;
+}
+
+@media print {
+  body {
+    background: white;
+    print-color-adjust: exact;
+    font-size: 11pt;
+  }
+
+  body > header,
+  aside,
+  [popovertarget],
+  #toc-mobile {
+    display: none;
+  }
+
+  main#notes {
+    padding: 0;
+  }
+
+  main article {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  main section + section,
+  main article + article {
+    break-before: page;
+  }
+
+  main h2,
+  main article > header,
+  .notes :is(h3, h4),
+  .notes p:has(+ :is(table, ul, ol)) {
+    break-after: avoid;
+  }
+
+  .notes :is(table, tr, li, .def, .tip, blockquote, p) {
+    break-inside: avoid;
+  }
+
+  .notes table {
+    display: table;
+  }
 }
