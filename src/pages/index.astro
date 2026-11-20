@@ -188,6 +188,40 @@ const toc: TocSection[] = sections.map((section) => ({
         link.addEventListener('click', () => tocMobile?.hidePopover());
       }
 
+      const tocLinks = [...document.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]')];
+      const sectionEls = [...document.querySelectorAll<HTMLElement>('main section, main article, main .notes h3')];
+
+      // The current position is the last section/class/sub-theme whose top has scrolled past the sticky header.
+      const markCurrent = () => {
+        const offset = (document.querySelector('body > header')?.clientHeight ?? 0) + 24;
+        const passed = sectionEls.filter((el) => el.getBoundingClientRect().top <= offset);
+        const lesson = passed.findLast((el) => el.tagName === 'ARTICLE');
+        const current = new Set(
+          [
+            passed.findLast((el) => el.tagName === 'SECTION'),
+            lesson,
+            passed.findLast((el) => el.tagName === 'H3' && el.closest('article') === lesson),
+          ].map((el) => el?.id),
+        );
+        for (const link of tocLinks) {
+          link.setAttribute('aria-current', String(current.has(decodeURIComponent(link.hash.slice(1)))));
+        }
+      };
+      let scheduled = false;
+      addEventListener(
+        'scroll',
+        () => {
+          if (scheduled) return;
+          scheduled = true;
+          requestAnimationFrame(() => {
+            scheduled = false;
+            markCurrent();
+          });
+        },
+        { passive: true },
+      );
+      markCurrent();
+
       const notes = document.querySelector<HTMLElement>('#notes');
       const form = document.querySelector<HTMLFormElement>('#search-form');
       const input = document.querySelector<HTMLInputElement>('#search');
