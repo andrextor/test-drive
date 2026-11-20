@@ -11,7 +11,7 @@ date: 2026-11-19
 | **Objetivo** | **Evitar** que ocurra el accidente. | **Mitigar las lesiones** cuando el accidente ocurre. |
 | **Cuándo actúa** | Antes del accidente. | Durante y después del accidente. |
 | **Cómo funciona** | Elementos y accesorios que ayudan a controlar el vehículo. | Funciona como un EPP (elemento de protección personal). |
-| **Ejemplos** | Frenos, luces, espejos, … (?) | Cinturón, airbag, reposacabezas, silla de retención, kit de carretera, bómper |
+| **Ejemplos** | Frenos, luces, espejos | Cinturón, airbag, reposacabezas, silla de retención, kit de carretera, bómper |
 
 ### Elementos de seguridad activa
 
@@ -20,11 +20,10 @@ date: 2026-11-19
 | Frenos | Detienen el vehículo a tiempo. |
 | Luces | Permiten ver y ser visto. |
 | Espejos | Muestran lo que pasa alrededor y atrás. |
-| … (?) | Palabra ilegible en las notas. |
 
 <div class="tip">
 
-**Frenos ABS:** evitan que las ruedas se bloqueen al frenar fuerte, así el conductor puede seguir maniobrando. En clase se mencionó otro sistema: … (?) ilegible en las notas.
+**Frenos ABS:** evitan que las ruedas se bloqueen al frenar fuerte, así el conductor puede seguir maniobrando.
 
 </div>
 

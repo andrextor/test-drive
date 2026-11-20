@@ -19,7 +19,6 @@ date: 2026-11-17
 | La vía | Demarcación (doble vía, blanco a los lados), estado del pavimento y aceras. |
 | Entorno comercial | Muchos peatones, vehículos parqueando y cargando: ir despacio. |
 | Entorno rural | Animales, poca iluminación, vías sin demarcar: más precaución. |
-| Entorno … (?) | Falta completar en las notas. |
 
 ### Historia de las normas de tránsito
 
@@ -60,7 +59,7 @@ date: 2026-11-17
 | Respuesta (?) | Debe dar tiempo al conductor para reaccionar. |
 | Ubicación | Visible y en el lugar correcto. |
 | Credibilidad | Muestra una situación real, para que se respete. |
-| Inclusión (?) | Falta completar en las notas. |
+| Inclusión (?) | Que la entiendan todos los usuarios de la vía. |
 
 ### Prelación de las señales (art. 111)
 
@@ -87,8 +86,6 @@ Si dos señales se contradicen, se obedece la que está más arriba:
 | **Informativas (SI)** | Rectángulo azul o verde | Guían: destinos, distancias, servicios. | Indicación de ciudad o gasolinera |
 | **Transitorias** | Fondo naranja | Cambios temporales (obras, desvíos). Comparten forma con las preventivas o informativas. | Desvío por obra |
 
-Notas de clase (?): SR-25 (Res. 1885 de 2015) "… parqueadero al lado o después". Falta confirmar qué indica.
-
 ### Señales horizontales (demarcaciones)
 
 **Colores de las líneas:**
@@ -97,7 +94,7 @@ Notas de clase (?): SR-25 (Res. 1885 de 2015) "… parqueadero al lado o despué
 | --- | --- |
 | Amarillo | Separa sentidos contrarios: vía de **doble sentido**. |
 | Blanco | Separa carriles del mismo sentido y marca bordes: vía de **un sentido**. |
-| Azul (?) | Mencionado en clase; falta completar. |
+| Azul (?) | Zonas especiales, como parqueo para personas con discapacidad. |
 
 **Tipos de línea:**
 
