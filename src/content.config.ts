@@ -7,7 +7,7 @@ const lessons = defineCollection({
   schema: z.object({
     title: z.string(),
     topic: z.string(),
-    date: z.coerce.date(),
+    date: z.coerce.date().optional(),
   }),
 });
 

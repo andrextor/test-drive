@@ -19,12 +19,19 @@ const formatDate = new Intl.DateTimeFormat('es-CO', {
   timeZone: 'UTC',
 });
 
-const entries = (await getCollection('lessons')).sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+// Classes (with a date) go first, in date order; undated complements go last.
+const entries = (await getCollection('lessons')).sort(
+  (a, b) =>
+    (a.data.date?.getTime() ?? Number.POSITIVE_INFINITY) - (b.data.date?.getTime() ?? Number.POSITIVE_INFINITY) ||
+    a.id.localeCompare(b.id),
+);
 
 const lessons = await Promise.all(
   entries.map(async (entry, index) => {
     const { Content, headings } = await render(entry);
-    return { entry, Content, number: index + 1, id: `clase-${index + 1}`, headings };
+    const label = entry.data.date ? `Clase ${index + 1}` : 'Complemento';
+    const id = entry.data.date ? `clase-${index + 1}` : `complemento-${entry.id}`;
+    return { entry, Content, label, id, headings };
   }),
 );
 
@@ -39,7 +46,7 @@ const toc: TocSection[] = sections.map((section) => ({
   topic: section.topic,
   lessons: section.items.map((lesson) => ({
     id: lesson.id,
-    number: lesson.number,
+    label: lesson.label,
     title: lesson.entry.data.title,
     headings: lesson.headings.filter((heading) => heading.depth === 3),
   })),
@@ -133,19 +140,30 @@ const toc: TocSection[] = sections.map((section) => ({
                 <span class="h-6 w-1.5 rounded-full bg-amber-500" aria-hidden="true" />
                 {section.topic}
               </h2>
-              {section.items.map(({ entry, Content, number, id }) => (
+              {section.items.map(({ entry, Content, label, id }) => (
                 <article
                   id={id}
                   class="mb-6 scroll-mt-36 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:scroll-mt-24 sm:p-8 dark:border-stone-800 dark:bg-stone-900"
                 >
                   <header class="mb-6 border-b border-stone-200 pb-5 dark:border-stone-800">
                     <div class="mb-2 flex flex-wrap items-center gap-2 text-sm">
-                      <span class="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-800 dark:bg-amber-400/15 dark:text-amber-300">
-                        Clase {number}
+                      <span
+                        class:list={[
+                          'rounded-full px-2.5 py-0.5 text-xs font-semibold',
+                          entry.data.date
+                            ? 'bg-amber-100 text-amber-800 dark:bg-amber-400/15 dark:text-amber-300'
+                            : 'bg-stone-200 text-stone-700 dark:bg-stone-700 dark:text-stone-200',
+                        ]}
+                      >
+                        {label}
                       </span>
-                      <time datetime={entry.data.date.toISOString().slice(0, 10)} class="text-stone-500">
-                        {formatDate.format(entry.data.date)}
-                      </time>
+                      {entry.data.date ? (
+                        <time datetime={entry.data.date.toISOString().slice(0, 10)} class="text-stone-500">
+                          {formatDate.format(entry.data.date)}
+                        </time>
+                      ) : (
+                        <span class="text-stone-500">No visto en clase: verificar con el profesor</span>
+                      )}
                     </div>
                     <h3 class="text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl dark:text-stone-50">
                       {entry.data.title}
