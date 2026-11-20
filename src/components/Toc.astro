@@ -1,0 +1,54 @@
+---
+export interface TocSection {
+  id: string;
+  topic: string;
+  lessons: { id: string; number: number; title: string; headings: { slug: string; text: string }[] }[];
+}
+
+interface Props {
+  sections: TocSection[];
+}
+
+const { sections } = Astro.props;
+---
+
+<p class="mb-4 text-xs font-semibold tracking-wider text-stone-500 uppercase">Temas</p>
+<ol class="space-y-6 text-sm">
+  {
+    sections.map((section) => (
+      <li>
+        <a
+          href={`#${section.id}`}
+          class="font-semibold text-stone-900 hover:text-amber-600 dark:text-stone-100 dark:hover:text-amber-400"
+        >
+          {section.topic}
+        </a>
+        <ol class="mt-2 space-y-3 border-l border-stone-200 dark:border-stone-800">
+          {section.lessons.map((lesson) => (
+            <li>
+              <a
+                href={`#${lesson.id}`}
+                class="-ml-px block border-l-2 border-transparent pl-3 leading-snug text-stone-700 hover:border-amber-500 hover:text-amber-700 dark:text-stone-300 dark:hover:text-amber-400"
+              >
+                <span class="block text-xs text-stone-400">Clase {lesson.number}</span>
+                {lesson.title}
+              </a>
+              <ul class="mt-1.5 space-y-1 pl-6">
+                {lesson.headings.map((heading) => (
+                  <li>
+                    <a
+                      href={`#${heading.slug}`}
+                      class="block text-[0.8125rem] leading-snug text-stone-500 hover:text-amber-700 dark:text-stone-400 dark:hover:text-amber-400"
+                    >
+                      {heading.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </li>
+    ))
+  }
+</ol>

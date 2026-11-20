@@ -1,19 +1,49 @@
 ---
+import '@fontsource-variable/lexend';
+import '../styles/global.css';
 import { getCollection, render } from 'astro:content';
+import Toc, { type TocSection } from '../components/Toc.astro';
 
-const lessons = (await getCollection('lessons')).sort((a, b) => a.data.order - b.data.order);
+const slugify = (text: string) =>
+  text
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+
+const formatDate = new Intl.DateTimeFormat('es-CO', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+const entries = (await getCollection('lessons')).sort((a, b) => a.data.date.getTime() - b.data.date.getTime());
+
+const lessons = await Promise.all(
+  entries.map(async (entry, index) => {
+    const { Content, headings } = await render(entry);
+    return { entry, Content, number: index + 1, id: `clase-${index + 1}`, headings };
+  }),
+);
 
 const topics = new Map<string, typeof lessons>();
 for (const lesson of lessons) {
-  topics.set(lesson.data.topic, [...(topics.get(lesson.data.topic) ?? []), lesson]);
+  topics.set(lesson.entry.data.topic, [...(topics.get(lesson.entry.data.topic) ?? []), lesson]);
 }
+const sections = [...topics].map(([topic, items]) => ({ id: `tema-${slugify(topic)}`, topic, items }));
 
-const sections = await Promise.all(
-  [...topics].map(async ([topic, entries]) => ({
-    topic,
-    entries: await Promise.all(entries.map(async (entry) => ({ entry, ...(await render(entry)) }))),
+const toc: TocSection[] = sections.map((section) => ({
+  id: section.id,
+  topic: section.topic,
+  lessons: section.items.map((lesson) => ({
+    id: lesson.id,
+    number: lesson.number,
+    title: lesson.entry.data.title,
+    headings: lesson.headings.filter((heading) => heading.depth === 3),
   })),
-);
+}));
 ---
 
 <!doctype html>
@@ -21,122 +51,206 @@ const sections = await Promise.all(
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)" />
     <title>Clases teóricas - Licencia de conducción</title>
   </head>
-  <body>
-    <h1>Clases teóricas - Licencia de conducción</h1>
+  <body class="bg-stone-50 font-sans text-stone-800 antialiased dark:bg-stone-950 dark:text-stone-200">
+    <header
+      class="sticky top-0 z-20 border-b border-stone-200/80 bg-stone-50/85 backdrop-blur-md dark:border-stone-800/80 dark:bg-stone-950/85"
+    >
+      <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:gap-8">
+        <a href="#" class="shrink-0">
+          <span class="block text-[0.6875rem] font-semibold tracking-widest text-amber-600 uppercase dark:text-amber-400">
+            Licencia de conducción
+          </span>
+          <span class="block text-lg font-semibold tracking-tight text-stone-900 dark:text-stone-50">Clases teóricas</span>
+        </a>
 
-    <input
-      id="search"
-      type="search"
-      placeholder="Buscar (ej.: art 67, culata, preventivas)"
-      aria-label="Buscar en los apuntes"
-    />
+        <form role="search" id="search-form" class="relative flex flex-1 items-center">
+          <svg
+            class="pointer-events-none absolute left-3.5 size-4 text-stone-400"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-3.5-3.5"></path>
+          </svg>
+          <input
+            id="search"
+            type="search"
+            autocomplete="off"
+            enterkeyhint="search"
+            placeholder="Buscar: art 67, culata, preventivas…"
+            aria-label="Buscar en los apuntes"
+            class="w-full rounded-xl border border-stone-300 bg-white py-2.5 pr-32 pl-10 text-base shadow-sm outline-none placeholder:text-stone-400 focus:border-amber-500 focus:ring-4 focus:ring-amber-500/15 dark:border-stone-700 dark:bg-stone-900"
+          />
+          <div class="absolute right-1.5 flex items-center gap-0.5">
+            <span id="search-count" class="mr-1 text-xs text-stone-500 tabular-nums" aria-live="polite"></span>
+            <button
+              type="button"
+              id="search-prev"
+              aria-label="Resultado anterior"
+              class="grid size-8 place-items-center rounded-lg text-stone-500 hover:bg-stone-100 disabled:opacity-30 dark:hover:bg-stone-800"
+              disabled
+            >
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="m6 15 6-6 6 6"></path>
+              </svg>
+            </button>
+            <button
+              type="submit"
+              id="search-next"
+              aria-label="Resultado siguiente"
+              class="grid size-8 place-items-center rounded-lg text-stone-500 hover:bg-stone-100 disabled:opacity-30 dark:hover:bg-stone-800"
+              disabled
+            >
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </header>
 
-    {
-      sections.map(({ topic, entries }) => (
-        <section>
-          <h2>{topic}</h2>
-          {entries.map(({ entry, Content }) => (
-            <details>
-              <summary>{entry.data.title}</summary>
-              <Content />
-            </details>
-          ))}
-        </section>
-      ))
-    }
+    <div class="mx-auto max-w-6xl px-4 lg:grid lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-12">
+      <main id="notes" class="min-w-0 pt-8 pb-28">
+        {
+          sections.map((section) => (
+            <section id={section.id} class="mb-14 scroll-mt-36 sm:scroll-mt-24">
+              <h2 class="mb-5 flex items-center gap-3 text-2xl font-semibold tracking-tight text-stone-900 dark:text-stone-50">
+                <span class="h-6 w-1.5 rounded-full bg-amber-500" aria-hidden="true" />
+                {section.topic}
+              </h2>
+              {section.items.map(({ entry, Content, number, id }) => (
+                <article
+                  id={id}
+                  class="mb-6 scroll-mt-36 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:scroll-mt-24 sm:p-8 dark:border-stone-800 dark:bg-stone-900"
+                >
+                  <header class="mb-6 border-b border-stone-200 pb-5 dark:border-stone-800">
+                    <div class="mb-2 flex flex-wrap items-center gap-2 text-sm">
+                      <span class="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-800 dark:bg-amber-400/15 dark:text-amber-300">
+                        Clase {number}
+                      </span>
+                      <time datetime={entry.data.date.toISOString().slice(0, 10)} class="text-stone-500">
+                        {formatDate.format(entry.data.date)}
+                      </time>
+                    </div>
+                    <h3 class="text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl dark:text-stone-50">
+                      {entry.data.title}
+                    </h3>
+                  </header>
+                  <div class="notes prose max-w-none prose-stone dark:prose-invert prose-headings:scroll-mt-36 prose-headings:tracking-tight prose-h3:mt-10 prose-h3:text-lg prose-h3:text-amber-700 first:prose-h3:mt-0 prose-table:text-sm sm:prose-headings:scroll-mt-24 dark:prose-h3:text-amber-400">
+                    <Content />
+                  </div>
+                </article>
+              ))}
+            </section>
+          ))
+        }
+      </main>
+
+      <aside class="hidden lg:block">
+        <nav aria-label="Temas" class="sticky top-24 max-h-[calc(100dvh-7rem)] overflow-y-auto pt-8 pb-8">
+          <Toc sections={toc} />
+        </nav>
+      </aside>
+    </div>
+
+    <button
+      type="button"
+      popovertarget="toc-mobile"
+      class="fixed right-4 bottom-4 z-30 flex items-center gap-2 rounded-full bg-stone-900 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-stone-900/20 lg:hidden dark:bg-amber-500 dark:text-stone-950"
+    >
+      <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M4 6h16M4 12h16M4 18h10"></path>
+      </svg>
+      Temas
+    </button>
+
+    <nav
+      id="toc-mobile"
+      popover
+      aria-label="Temas"
+      class="fixed inset-y-0 right-0 left-auto m-0 h-dvh max-h-none w-80 max-w-[85vw] overflow-y-auto border-l border-stone-200 bg-white p-6 shadow-2xl backdrop:bg-stone-950/40 lg:hidden dark:border-stone-800 dark:bg-stone-900 dark:text-stone-200"
+    >
+      <Toc sections={toc} />
+    </nav>
 
     <script>
-      const normalize = (text: string) =>
-        text
-          .normalize('NFD')
-          .replace(/[̀-ͯ]/g, '')
-          .toLowerCase();
-      const input = document.querySelector<HTMLInputElement>('#search');
-      const lessons = [...document.querySelectorAll('details')];
-      const sections = [...document.querySelectorAll('section')];
+      const tocMobile = document.querySelector<HTMLElement>('#toc-mobile');
+      for (const link of tocMobile?.querySelectorAll('a') ?? []) {
+        link.addEventListener('click', () => tocMobile?.hidePopover());
+      }
 
-      input?.addEventListener('input', () => {
-        const query = normalize(input.value.trim());
-        for (const lesson of lessons) {
-          const match = !query || normalize(lesson.textContent ?? '').includes(query);
-          lesson.hidden = !match;
-          lesson.open = Boolean(query) && match;
+      const notes = document.querySelector<HTMLElement>('#notes');
+      const form = document.querySelector<HTMLFormElement>('#search-form');
+      const input = document.querySelector<HTMLInputElement>('#search');
+      const count = document.querySelector<HTMLElement>('#search-count');
+      const prev = document.querySelector<HTMLButtonElement>('#search-prev');
+      const next = document.querySelector<HTMLButtonElement>('#search-next');
+
+      // Folding char by char keeps folded indexes aligned with the original text node offsets.
+      const fold = (text: string) =>
+        text
+          .split('')
+          .map((char) => char.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase()[0] ?? char)
+          .join('');
+
+      let matches: Range[] = [];
+      let current = 0;
+
+      const focusMatch = (index: number) => {
+        if (!matches.length || !count) return;
+        current = (index + matches.length) % matches.length;
+        const range = matches[current];
+        CSS.highlights.set('search-current', new Highlight(range));
+        count.textContent = `${current + 1}/${matches.length}`;
+        range.startContainer.parentElement?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      };
+
+      const search = () => {
+        if (!notes || !input || !count || !prev || !next) return;
+        CSS.highlights.clear();
+        matches = [];
+        const query = fold(input.value.trim());
+        const words = query.match(/[\p{L}\p{N}]+/gu) ?? [];
+        if (query.length >= 2 && words.length) {
+          // Separators in the query match any punctuation/space, so "art 67" finds "art. 67".
+          const pattern = new RegExp(words.join('[^\\p{L}\\p{N}]+'), 'gu');
+          const walker = document.createTreeWalker(notes, NodeFilter.SHOW_TEXT);
+          for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+            for (const match of fold(node.textContent ?? '').matchAll(pattern)) {
+              const range = new Range();
+              range.setStart(node, match.index);
+              range.setEnd(node, match.index + match[0].length);
+              matches.push(range);
+            }
+          }
         }
-        for (const section of sections) {
-          section.hidden = !section.querySelector('details:not([hidden])');
+        CSS.highlights.set('search', new Highlight(...matches));
+        count.textContent = query.length >= 2 ? (matches.length ? '' : '0') : '';
+        prev.disabled = next.disabled = !matches.length;
+        focusMatch(0);
+      };
+
+      input?.addEventListener('input', search);
+      form?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        focusMatch(current + 1);
+      });
+      prev?.addEventListener('click', () => focusMatch(current - 1));
+      input?.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && event.shiftKey) {
+          event.preventDefault();
+          focusMatch(current - 1);
         }
       });
     </script>
-
-    <style is:global>
-      :root {
-        color-scheme: light dark;
-      }
-      body {
-        font-family: system-ui, sans-serif;
-        line-height: 1.6;
-        max-width: 48rem;
-        margin: 0 auto;
-        padding: 1rem;
-        counter-reset: lesson;
-      }
-      details {
-        border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
-        border-radius: 0.5rem;
-        padding: 0.75rem 1rem;
-        margin-block: 0.75rem;
-      }
-      summary {
-        cursor: pointer;
-        font-weight: 600;
-        counter-increment: lesson;
-      }
-      summary::before {
-        content: "Clase " counter(lesson) ": ";
-      }
-      h2 {
-        margin-top: 2rem;
-      }
-      table {
-        display: block;
-        overflow-x: auto;
-        border-collapse: collapse;
-      }
-      th,
-      td {
-        border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
-        padding: 0.25rem 0.5rem;
-        text-align: left;
-      }
-      blockquote {
-        margin: 0.75rem 0;
-        border-left: 4px solid #d97706;
-        background: color-mix(in srgb, #d97706 12%, transparent);
-        padding: 0.5rem 0.75rem;
-        border-radius: 0.25rem;
-      }
-      blockquote p {
-        margin: 0;
-      }
-      blockquote p::before {
-        content: "Pregunta de examen: ";
-        font-weight: 600;
-      }
-      #search {
-        position: sticky;
-        top: 0;
-        z-index: 1;
-        width: 100%;
-        box-sizing: border-box;
-        padding: 0.6rem 0.75rem;
-        font-size: 1rem;
-        border-radius: 0.5rem;
-        border: 1px solid color-mix(in srgb, currentColor 40%, transparent);
-        background: Canvas;
-        color: CanvasText;
-      }
-    </style>
   </body>
 </html>

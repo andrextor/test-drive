@@ -5,8 +5,8 @@ Study notes for the theory classes of a driving licence course. The owner pastes
 ## Workflow when the owner sends notes
 
 1. Read `src/content/lessons/` first to see the existing topics and lessons.
-2. Each lesson is one Markdown file `src/content/lessons/NN-slug.md` with frontmatter `title`, `topic` and `order` (the order it was taught). Topics are grouped on the page in order of their first lesson; reuse the exact `topic` string to add to an existing topic.
-3. Numbering ("Clase N") is automatic via CSS counters; never number by hand.
+2. Each class is one Markdown file `src/content/lessons/YYYY-MM-DD-slug.md` with frontmatter `title`, `topic` and `date` (the class date written in the notes). Use `###` for each sub-theme: those headings feed the side menu. Topics are grouped on the page in order of their first class; reuse the exact `topic` string to add to an existing topic.
+3. Numbering ("Clase N") is automatic, by date; never number by hand.
 4. Anything the teacher said will be in the exam goes in a blockquote (`> question and answer`) inside the lesson where it was mentioned; it renders as "Pregunta de examen".
 5. Run `pnpm lint:fix && pnpm build` before committing.
 6. Commit after each update. Ask the owner before pushing to `origin main` (pushing deploys to Vercel).
@@ -20,6 +20,7 @@ Study notes for the theory classes of a driving licence course. The owner pastes
 ## Technical rules
 
 - Astro (static output) + pnpm, deployed on Vercel. Single page `src/pages/index.astro`; lessons are a content collection (`src/content.config.ts`).
-- Keep dependencies to Astro, Biome and TypeScript. The only client JS is the search box.
-- Native HTML/CSS (`<details>`, tables, CSS counters), no CSS framework.
+- Tailwind CSS v4 (+ typography plugin for the Markdown) and Lexend font. Avoid adding other dependencies.
+- The only client JS is the search (CSS Custom Highlight API) and closing the mobile menu (native `popover`).
+- Biome does not touch Markdown (it breaks the frontmatter).
 - Biome for lint/format, 2-space indentation, TypeScript strict.
