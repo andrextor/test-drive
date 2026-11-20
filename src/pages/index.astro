@@ -1,0 +1,142 @@
+---
+import { getCollection, render } from 'astro:content';
+
+const lessons = (await getCollection('lessons')).sort((a, b) => a.data.order - b.data.order);
+
+const topics = new Map<string, typeof lessons>();
+for (const lesson of lessons) {
+  topics.set(lesson.data.topic, [...(topics.get(lesson.data.topic) ?? []), lesson]);
+}
+
+const sections = await Promise.all(
+  [...topics].map(async ([topic, entries]) => ({
+    topic,
+    entries: await Promise.all(entries.map(async (entry) => ({ entry, ...(await render(entry)) }))),
+  })),
+);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clases teóricas - Licencia de conducción</title>
+  </head>
+  <body>
+    <h1>Clases teóricas - Licencia de conducción</h1>
+
+    <input
+      id="search"
+      type="search"
+      placeholder="Buscar (ej.: art 67, culata, preventivas)"
+      aria-label="Buscar en los apuntes"
+    />
+
+    {
+      sections.map(({ topic, entries }) => (
+        <section>
+          <h2>{topic}</h2>
+          {entries.map(({ entry, Content }) => (
+            <details>
+              <summary>{entry.data.title}</summary>
+              <Content />
+            </details>
+          ))}
+        </section>
+      ))
+    }
+
+    <script>
+      const normalize = (text: string) =>
+        text
+          .normalize('NFD')
+          .replace(/[̀-ͯ]/g, '')
+          .toLowerCase();
+      const input = document.querySelector<HTMLInputElement>('#search');
+      const lessons = [...document.querySelectorAll('details')];
+      const sections = [...document.querySelectorAll('section')];
+
+      input?.addEventListener('input', () => {
+        const query = normalize(input.value.trim());
+        for (const lesson of lessons) {
+          const match = !query || normalize(lesson.textContent ?? '').includes(query);
+          lesson.hidden = !match;
+          lesson.open = Boolean(query) && match;
+        }
+        for (const section of sections) {
+          section.hidden = !section.querySelector('details:not([hidden])');
+        }
+      });
+    </script>
+
+    <style is:global>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        line-height: 1.6;
+        max-width: 48rem;
+        margin: 0 auto;
+        padding: 1rem;
+        counter-reset: lesson;
+      }
+      details {
+        border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        margin-block: 0.75rem;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+        counter-increment: lesson;
+      }
+      summary::before {
+        content: "Clase " counter(lesson) ": ";
+      }
+      h2 {
+        margin-top: 2rem;
+      }
+      table {
+        display: block;
+        overflow-x: auto;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+        padding: 0.25rem 0.5rem;
+        text-align: left;
+      }
+      blockquote {
+        margin: 0.75rem 0;
+        border-left: 4px solid #d97706;
+        background: color-mix(in srgb, #d97706 12%, transparent);
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.25rem;
+      }
+      blockquote p {
+        margin: 0;
+      }
+      blockquote p::before {
+        content: "Pregunta de examen: ";
+        font-weight: 600;
+      }
+      #search {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.6rem 0.75rem;
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid color-mix(in srgb, currentColor 40%, transparent);
+        background: Canvas;
+        color: CanvasText;
+      }
+    </style>
+  </body>
+</html>
