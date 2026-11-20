@@ -33,6 +33,16 @@
       h2 {
         margin-top: 2rem;
       }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+        padding: 0.25rem 0.5rem;
+        text-align: left;
+      }
       .exam {
         border-left: 4px solid #d97706;
         background: color-mix(in srgb, #d97706 12%, transparent);
@@ -43,22 +53,141 @@
         content: "Pregunta de examen: ";
         font-weight: 600;
       }
+      #search {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.6rem 0.75rem;
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        border: 1px solid color-mix(in srgb, currentColor 40%, transparent);
+        background: Canvas;
+        color: CanvasText;
+      }
     </style>
   </head>
   <body>
     <h1>Clases teóricas - Licencia de conducción</h1>
 
-    <!-- Copy a <details> block per lesson, in the order seen. Group lessons under an <h2> topic. -->
+    <input id="search" type="search" placeholder="Buscar (ej.: art 67, culata, preventivas)" aria-label="Buscar en los apuntes" />
 
-    <h2>Tema de ejemplo</h2>
+    <h2>Adaptación al medio</h2>
 
     <details>
-      <summary>Título de la clase</summary>
-      <p>Apuntes de la clase.</p>
+      <summary>Señales de tránsito y entorno</summary>
+      <h3>Señales de tránsito</h3>
+      <p>Incluyen señales verticales, horizontales (líneas), cruces, desvíos, etc.</p>
+      <table>
+        <tr><th>Tipo</th><th>Descripción</th><th>Códigos / ejemplos</th></tr>
+        <tr><td>Reglamentarias</td><td>(pendiente de fotos)</td><td>(pendiente)</td></tr>
+        <tr><td>Preventivas</td><td>(pendiente de fotos)</td><td>(pendiente)</td></tr>
+        <tr><td>Informativas</td><td>(pendiente de fotos)</td><td>(pendiente)</td></tr>
+        <tr><td>Transitorias</td><td>Comparten características con las preventivas o las informativas.</td><td>(pendiente)</td></tr>
+      </table>
+
+      <h3>El entorno que nos rodea (?)</h3>
       <ul>
-        <li>Punto clave</li>
+        <li>La vía</li>
+        <li>Entorno comercial</li>
+        <li>Entorno rural</li>
       </ul>
-      <p class="exam">Pregunta que el profesor dijo que sale, con su respuesta.</p>
+
+      <h3>Demarcaciones</h3>
+      <p>(pendiente de fotos)</p>
+
+      <p class="exam">¿Cuándo nacieron las leyes de tránsito? R: 1974, Viena (Austria). (?) La Convención de Viena sobre circulación vial es de 1968; confirmar el año con el profesor.</p>
+      <p class="exam">Artículo 118 (?): falta la pregunta/respuesta.</p>
     </details>
+
+    <h2>Adaptación al vehículo</h2>
+
+    <details>
+      <summary>Adaptarse a las condiciones del medio</summary>
+      <h3>Demarcaciones</h3>
+      <ul>
+        <li>Doble línea continua</li>
+        <li>Línea segmentada</li>
+      </ul>
+
+      <h3>Señales verticales</h3>
+      <ul>
+        <li>Preventivas</li>
+        <li>Informativas</li>
+        <li>Reglamentarias</li>
+      </ul>
+
+      <h3>Otras señales (?)</h3>
+      <ul>
+        <li><strong>Corporales:</strong> (pendiente)</li>
+        <li><strong>Luminosas:</strong> ej. semáforo vehicular, semáforo peatonal, luz intermitente.</li>
+        <li><strong>Sonoras:</strong> ej. silbato del agente de tránsito, sirena de vehículos de emergencia.</li>
+      </ul>
+
+      <h3>Reductores de velocidad</h3>
+      <p>(pendiente)</p>
+    </details>
+
+    <h2>Mecánica básica</h2>
+
+    <details>
+      <summary>Carrocería, chasis y motor</summary>
+      <h3>Tipos de carrocería</h3>
+      <ul>
+        <li>Sedán</li>
+        <li>Hatchback</li>
+        <li>Pick-up</li>
+      </ul>
+
+      <h3>Chasis</h3>
+      <p>(pendiente)</p>
+
+      <h3>Tipos de motor</h3>
+      <ul>
+        <li>Gasolina: ciclo Otto</li>
+        <li>Diésel</li>
+        <li>Eléctrico</li>
+      </ul>
+
+      <h3>Partes del motor</h3>
+      <ul>
+        <li>Culata</li>
+        <li>Bloque</li>
+        <li>Cárter</li>
+      </ul>
+    </details>
+
+    <h2>Técnicas de conducción</h2>
+
+    <details>
+      <summary>Seguridad activa y pasiva</summary>
+      <h3>Seguridad activa</h3>
+      <p>(pendiente)</p>
+
+      <h3>Seguridad pasiva</h3>
+      <ul>
+        <li>Cinturón de seguridad</li>
+        <li>Airbag</li>
+        <li>Reposacabezas</li>
+      </ul>
+
+      <h3>Llantas</h3>
+      <p>(pendiente)</p>
+
+      <p class="exam">Señalizar un giro con la luz direccional (art. 67): con 30 m de anticipación en vías urbanas y 60 m en vías rápidas.</p>
+    </details>
+
+    <script>
+      const normalize = (text) => text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+      const lessons = [...document.querySelectorAll("details")];
+      document.getElementById("search").addEventListener("input", (event) => {
+        const query = normalize(event.target.value.trim());
+        for (const lesson of lessons) {
+          const match = !query || normalize(lesson.textContent).includes(query);
+          lesson.hidden = !match;
+          lesson.open = Boolean(query) && match;
+        }
+      });
+    </script>
   </body>
 </html>
