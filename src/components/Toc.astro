@@ -34,12 +34,13 @@ const { sections } = Astro.props;
                 {lesson.title}
               </a>
               <ul class="mt-1.5 space-y-1 pl-6">
-                {lesson.headings.map((heading) => (
+                {lesson.headings.map((heading, index) => (
                   <li>
                     <a
                       href={`#${heading.slug}`}
                       class="-ml-2 block rounded-md px-2 py-0.5 text-[0.8125rem] leading-snug text-stone-500 hover:text-amber-700 aria-[current=true]:bg-amber-100 aria-[current=true]:font-medium aria-[current=true]:text-amber-800 dark:text-stone-400 dark:hover:text-amber-400 dark:aria-[current=true]:bg-amber-400/15 dark:aria-[current=true]:text-amber-300"
                     >
+                      <span class="mr-1.5 text-stone-400 tabular-nums">{index + 1}.</span>
                       {heading.text}
                     </a>
                   </li>

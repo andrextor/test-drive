@@ -15,7 +15,9 @@ Study notes for the theory classes of a driving licence course. The owner pastes
 
 - Notes content is written in Spanish; code, class names and commit messages in English.
 - Clean up and order the notes, fix spelling, but do not invent facts. If something in the notes is unclear, incomplete or looks wrong, ask the owner or mark it visibly with `(?)` instead of guessing: these notes are used in a real exam.
-- Prefer short lists, definitions and tables over long paragraphs, since everything is recopied by hand.
+- Notebook style: never dump bare lists. Each `###` sub-theme gets a short explanation and, where it compares things, a table (`| Item | Qué es / para qué |`). Keep everything short, since it is recopied by hand.
+- Building blocks in the Markdown: `<div class="def">` (blank lines inside) for definitions, `<div class="tip">` for "Ojo"/examples, `>` for exam questions, `(?)` for anything to confirm.
+- Short explanations of standard, well-known concepts may be added to develop the notes; cite Colombian articles (Ley 769 de 2002, Res. 1885 de 2015) only when sure, otherwise mark `(?)`.
 
 ## Technical rules
 

@@ -4,57 +4,82 @@ topic: Mecánica básica
 date: 2026-11-18
 ---
 
-### ¿Qué es un vehículo?
+### Qué es un vehículo
 
-Complejo mecánico capaz de desplazarse por sí mismo de forma terrestre.
+<div class="def">
+
+**Vehículo:** complejo mecánico capaz de desplazarse por sí mismo de forma terrestre.
+
+</div>
 
 Sus partes se agrupan en:
 
-- Internas
-- Externas
-- Estructurales
+| Grupo | Ejemplos |
+| --- | --- |
+| Internas | Motor, sistemas |
+| Externas | Carrocería, luces, espejos |
+| Estructurales | Chasis |
 
-### Carrocería
+### Carrocería y chasis
 
-- Sedán
-- Hatchback
-- Pick-up
+<div class="def">
 
-### Chasis
+**Carrocería:** la "piel" del vehículo; protege a los ocupantes y la carga.
 
-- Es la base estructural del vehículo.
-- Está formado por bastidores.
+**Chasis:** la base estructural formada por **bastidores**; sostiene el motor, la carrocería y los sistemas.
 
-### Motor
+</div>
 
-Transforma la energía (eléctrica o del combustible) en energía mecánica.
+**Tipos de carrocería:**
+
+| Tipo | Cómo es |
+| --- | --- |
+| Sedán | Cuatro puertas y baúl separado de la cabina. |
+| Hatchback | Compuerta trasera con vidrio; el baúl va unido a la cabina. |
+| Pick-up | Cabina y platón de carga abierto atrás. |
+
+### El motor
+
+<div class="def">
+
+**Motor:** transforma la energía (eléctrica o del combustible) en **energía mecánica** que mueve el vehículo.
+
+</div>
 
 **Ciclo de cuatro tiempos:**
 
-1. Admisión
-2. Compresión
-3. Explosión
-4. Escape
-
-| Tipo de motor | Característica                                                 |
-| ------------- | -------------------------------------------------------------- |
-| Gasolina      | Ciclo Otto                                                     |
-| Diésel        | —                                                              |
-| Eléctrico     | 1832, Robert Anderson                                          |
-| GLP y GNC     | Alternativos: gas licuado de petróleo o gas natural comprimido |
-| Híbrido       | Combina combustión (gasolina) y eléctrico                      |
-| Rotativo      | Rotores con forma triangular                                   |
+| Tiempo | Qué pasa |
+| --- | --- |
+| 1. Admisión | Entra la mezcla de aire y combustible al cilindro. |
+| 2. Compresión | El pistón sube y comprime la mezcla. |
+| 3. Explosión | La mezcla se enciende y empuja el pistón hacia abajo. |
+| 4. Escape | Salen los gases quemados. |
 
 **Partes del motor:**
 
-- Culata
-- Bloque
-- Cárter: depósito de aceite.
+| Parte | Ubicación y función |
+| --- | --- |
+| Culata | Parte de arriba; cierra los cilindros. |
+| Bloque | Cuerpo principal; contiene los cilindros. |
+| Cárter | Parte de abajo; **depósito de aceite**. |
+
+### Tipos de motor
+
+| Tipo | Característica |
+| --- | --- |
+| Gasolina | Ciclo **Otto**: la mezcla se enciende con una chispa. |
+| Diésel | El combustible se enciende por la presión de la compresión. |
+| Eléctrico | Inventado en **1832** por **Robert Anderson**. |
+| GLP y GNC | Combustibles alternativos: gas licuado de petróleo o gas natural comprimido. |
+| Híbrido | Combina un motor de combustión (gasolina) y uno eléctrico. |
+| Rotativo | Usa rotores con forma triangular en lugar de pistones. |
 
 ### Sistemas del vehículo
 
-- Transmisión
-- Frenos
-- Dirección: mecánica, hidráulica o electroasistida.
-- Suspensión
-- Eléctrico
+| Sistema | Para qué sirve |
+| --- | --- |
+| Transmisión | Lleva la fuerza del motor a las ruedas. |
+| Frenos | Reducen la velocidad y detienen el vehículo. |
+| Dirección | Orienta las ruedas. Puede ser **mecánica, hidráulica o electroasistida**. |
+| Suspensión | Absorbe las irregularidades de la vía y mantiene las llantas en contacto con el piso. |
+| Eléctrico | Batería, arranque, luces y accesorios. |

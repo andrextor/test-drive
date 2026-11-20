@@ -4,38 +4,48 @@ topic: Técnicas de conducción
 date: 2026-11-19
 ---
 
-### Seguridad activa
+### Seguridad activa vs. pasiva
 
-Elementos y accesorios diseñados para **evitar** el accidente.
+| | Seguridad activa | Seguridad pasiva |
+| --- | --- | --- |
+| **Objetivo** | **Evitar** que ocurra el accidente. | **Mitigar las lesiones** cuando el accidente ocurre. |
+| **Cuándo actúa** | Antes del accidente. | Durante y después del accidente. |
+| **Cómo funciona** | Elementos y accesorios que ayudan a controlar el vehículo. | Funciona como un EPP (elemento de protección personal). |
+| **Ejemplos** | Frenos, luces, espejos, … (?) | Cinturón, airbag, reposacabezas, silla de retención, kit de carretera, bómper |
 
-- Frenos
-- Luces
-- Espejos
-- … (?) palabra ilegible en las notas
+### Elementos de seguridad activa
 
-### Seguridad pasiva
+| Elemento | Cómo previene el accidente |
+| --- | --- |
+| Frenos | Detienen el vehículo a tiempo. |
+| Luces | Permiten ver y ser visto. |
+| Espejos | Muestran lo que pasa alrededor y atrás. |
+| … (?) | Palabra ilegible en las notas. |
 
-Diseñada como un EPP (elemento de protección personal) para **mitigar las lesiones** cuando ocurre el accidente.
+<div class="tip">
 
-- Cinturones de seguridad
-- Airbag
-- Reposacabezas
-- Silla de retención (niños)
-- Kit de carretera
-- Bómper
+**Frenos ABS:** evitan que las ruedas se bloqueen al frenar fuerte, así el conductor puede seguir maniobrando. En clase se mencionó otro sistema: … (?) ilegible en las notas.
+
+</div>
+
+### Elementos de seguridad pasiva
+
+| Elemento | Cómo protege |
+| --- | --- |
+| Cinturón de seguridad | Mantiene al ocupante en su silla y evita que salga proyectado. |
+| Airbag | Se infla en el choque y amortigua el golpe. |
+| Reposacabezas | Protege el cuello en golpes por detrás. |
+| Silla de retención | Protege a los niños según su edad y tamaño. |
+| Kit de carretera | Permite atender una emergencia en la vía. |
+| Bómper | Absorbe parte del impacto. |
 
 ### Cascos: normas
 
-| Norma     | Origen     |
-| --------- | ---------- |
-| DOT       | Americana  |
-| ECE 22.05 | Europea    |
-| NTC 4533  | Colombiana |
-
-### Frenos
-
-- ABS
-- … (?) segundo sistema ilegible en las notas
+| Norma | Origen |
+| --- | --- |
+| DOT | Estados Unidos |
+| ECE 22.05 | Europa |
+| NTC 4533 | Colombia |
 
 ### Llantas
 

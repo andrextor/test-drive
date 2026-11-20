@@ -119,7 +119,13 @@ const toc: TocSection[] = sections.map((section) => ({
     </header>
 
     <div class="mx-auto max-w-6xl px-4 lg:grid lg:grid-cols-[minmax(0,1fr)_16rem] lg:gap-12">
-      <main id="notes" class="min-w-0 pt-8 pb-28">
+      <main id="notes" class="min-w-0 pt-8 pb-[70vh]">
+        <p class="mb-8 flex flex-wrap gap-x-4 gap-y-2 text-xs text-stone-500">
+          <span class="inline-flex items-center gap-1.5"><span class="size-2.5 rounded-sm bg-sky-400"></span>Definición</span>
+          <span class="inline-flex items-center gap-1.5"><span class="size-2.5 rounded-sm bg-emerald-400"></span>Ojo / ejemplo</span>
+          <span class="inline-flex items-center gap-1.5"><span class="size-2.5 rounded-sm bg-amber-500"></span>Pregunta de examen</span>
+          <span><strong class="font-semibold text-stone-700 dark:text-stone-300">(?)</strong> dato por confirmar con el profesor</span>
+        </p>
         {
           sections.map((section) => (
             <section id={section.id} class="mb-14 scroll-mt-36 sm:scroll-mt-24">
@@ -193,7 +199,7 @@ const toc: TocSection[] = sections.map((section) => ({
 
       // The current position is the last section/class/sub-theme whose top has scrolled past the sticky header.
       const markCurrent = () => {
-        const offset = (document.querySelector('body > header')?.clientHeight ?? 0) + 24;
+        const offset = (document.querySelector('body > header')?.clientHeight ?? 0) + 64;
         const passed = sectionEls.filter((el) => el.getBoundingClientRect().top <= offset);
         const lesson = passed.findLast((el) => el.tagName === 'ARTICLE');
         const current = new Set(
@@ -204,7 +210,11 @@ const toc: TocSection[] = sections.map((section) => ({
           ].map((el) => el?.id),
         );
         for (const link of tocLinks) {
-          link.setAttribute('aria-current', String(current.has(decodeURIComponent(link.hash.slice(1)))));
+          const isCurrent = current.has(decodeURIComponent(link.hash.slice(1)));
+          if (isCurrent && link.getAttribute('aria-current') !== 'true' && link.closest('aside')) {
+            link.scrollIntoView({ block: 'nearest' });
+          }
+          link.setAttribute('aria-current', String(isCurrent));
         }
       };
       let scheduled = false;
