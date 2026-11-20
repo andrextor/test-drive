@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clases teóricas - Licencia de conducción</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        line-height: 1.6;
+        max-width: 48rem;
+        margin: 0 auto;
+        padding: 1rem;
+        counter-reset: lesson;
+      }
+      details {
+        border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        margin-block: 0.75rem;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+        counter-increment: lesson;
+      }
+      summary::before {
+        content: "Clase " counter(lesson) ": ";
+      }
+      h2 {
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Clases teóricas - Licencia de conducción</h1>
+
+    <!-- Copy a <details> block per lesson, in the order seen. Group lessons under an <h2> topic. -->
+
+    <h2>Tema de ejemplo</h2>
+
+    <details>
+      <summary>Título de la clase</summary>
+      <p>Apuntes de la clase.</p>
+      <ul>
+        <li>Punto clave</li>
+      </ul>
+    </details>
+  </body>
+</html>
