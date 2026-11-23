@@ -102,18 +102,6 @@ Se hace en un **CDA** (Centro de Diagnóstico Automotor) y revisa frenos, luces,
 | Dentro de los 5 días hábiles | 50 % |
 | Entre el día 6 y el 20 hábil | 25 % |
 
-### Alcohol y conducción (Ley 1696 de 2013)
-
-| Grado | Miligramos de etanol por 100 ml de sangre |
-| --- | --- |
-| Grado 0 | 20 a 39 |
-| Grado 1 | 40 a 99 |
-| Grado 2 | 100 a 149 |
-| Grado 3 | 150 o más |
-
-- Las sanciones son multa, suspensión de la licencia e inmovilización del vehículo; aumentan con el grado y si se reincide.
-- **Negarse a la prueba** de alcoholemia se sanciona con la sanción **más alta**.
-
 ### Límites de velocidad (Ley 2251 de 2022)
 
 | Vía | Velocidad máxima |
