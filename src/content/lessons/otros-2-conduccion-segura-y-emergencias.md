@@ -50,20 +50,6 @@ La distancia aumenta con la **velocidad**, la **lluvia**, las llantas gastadas, 
 - Los **menores de 10 años** no pueden ir en el asiento delantero.
 - Los niños usan **silla de retención** según su edad y tamaño.
 
-### Kit de carretera (art. 30)
-
-| Elemento | Para qué |
-| --- | --- |
-| Gato | Para levantar el vehículo. |
-| Cruceta | Para aflojar las tuercas de la llanta. |
-| Dos señales de carretera | Triángulos reflectivos para avisar el peligro. |
-| Botiquín | Primeros auxilios. |
-| Extintor | Para apagar un incendio. |
-| Dos tacos | Para bloquear las llantas. |
-| Caja de herramientas básica | Reparaciones simples. |
-| Llanta de repuesto | Cambiar una llanta pinchada. |
-| Linterna | Ver de noche. |
-
 ### Qué hacer en un accidente: PAS
 
 | Paso | Qué hacer |
