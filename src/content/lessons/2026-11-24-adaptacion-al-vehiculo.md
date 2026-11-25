@@ -108,4 +108,4 @@ Estas tres salen seguro en el examen:
 
 > El Código Nacional de Tránsito es la… R: **Ley 769 de 2002**.
 
-> ¿Qué es obligatorio en el kit de carretera (kit de prevención)? R: **Chaleco o prenda reflectiva**.
+> ¿Qué NO es obligatorio (es opcional) en el kit de carretera? R: **Chaleco o prenda reflectiva**.
