@@ -97,10 +97,16 @@ El color del testigo dice qué tan grave es:
 | Antiniebla | Están encendidas las antiniebla. |
 | Estacionarias | Están encendidas las luces de parqueo. |
 
-### Antes de arrancar
+### Adaptación al vehículo (antes de arrancar)
 
-- Ajustar los **espejos**.
-- Ajustar el **asiento**.
+Antes de arrancar, el conductor acomoda el puesto de conducción, en este orden:
+
+| Paso | Ajuste |
+| --- | --- |
+| 1 | **Asiento del conductor:** espaldar (respaldo), distancia a los pedales y reposacabezas. |
+| 2 | **Espejos laterales.** |
+| 3 | **Espejo retrovisor** (el de adentro, para ver atrás). |
+| 4 | **Ponerse el cinturón.** |
 
 ### Adaptación a la moto
 
