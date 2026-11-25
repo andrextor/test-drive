@@ -7,12 +7,13 @@ export interface TocSection {
 
 interface Props {
   sections: TocSection[];
+  title?: string;
 }
 
-const { sections } = Astro.props;
+const { sections, title = 'Temas' } = Astro.props;
 ---
 
-<p class="mb-4 text-xs font-semibold tracking-wider text-stone-500 uppercase">Temas</p>
+<p class="mb-4 text-xs font-semibold tracking-wider text-stone-500 uppercase">{title}</p>
 <ol class="space-y-6 text-sm">
   {
     sections.map((section) => (
@@ -25,7 +26,7 @@ const { sections } = Astro.props;
         </a>
         <ol class="mt-2 space-y-3 border-l border-stone-200 dark:border-stone-800">
           {section.lessons.map((lesson) => (
-            <li>
+            <li class="break-inside-avoid">
               <a
                 href={`#${lesson.id}`}
                 class="-ml-px block border-l-2 border-transparent pl-3 leading-snug text-stone-700 hover:border-amber-500 hover:text-amber-700 aria-[current=true]:border-amber-500 aria-[current=true]:font-medium aria-[current=true]:text-amber-700 dark:text-stone-300 dark:hover:text-amber-400 dark:aria-[current=true]:text-amber-400"

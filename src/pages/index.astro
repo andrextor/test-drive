@@ -152,28 +152,7 @@ const toc: TocSection[] = sections.map((section) => ({
           <p class="mt-4 text-lg text-stone-500">Apuntes del curso</p>
         </div>
         <div class="hidden break-after-page print:block">
-          <p class="mb-3 text-2xl font-semibold tracking-tight text-stone-900">Índice</p>
-          <ol class="space-y-2 text-sm">
-            {
-              toc.map((section) => (
-                <li class="break-inside-avoid">
-                  <p class="font-semibold text-amber-700">{section.topic}</p>
-                  <ul class="space-y-0.5 pl-4 text-xs">
-                    {section.lessons.map((lesson) => (
-                      <li>
-                        <span class="font-medium">
-                          {lesson.label}: {lesson.title}
-                        </span>
-                        <span class="block text-[0.6875rem] leading-snug text-stone-500">
-                          {lesson.headings.map((heading) => heading.text).join(' · ')}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              ))
-            }
-          </ol>
+          <Toc sections={toc} title="Índice" />
         </div>
         <p class="mb-8 flex flex-wrap gap-x-4 gap-y-2 text-xs text-stone-500">
           <span class="inline-flex items-center gap-1.5"><span class="size-2.5 rounded-sm bg-sky-400"></span>Definición</span>

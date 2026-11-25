@@ -12,7 +12,7 @@ date: 2026-11-24
 
 </div>
 
-### 1. Documentos
+### Documentos
 
 | Documento | Qué revisar |
 | --- | --- |
@@ -20,7 +20,7 @@ date: 2026-11-24
 | RTM (revisión técnico-mecánica) | Vigencia. |
 | Licencia de tránsito | Que coincidan la **placa** y el **color** del vehículo. |
 
-### 2. Fluidos (líquidos)
+### Fluidos (líquidos)
 
 **Aceite del motor:** se revisa con la **bayoneta** (varilla medidora).
 
@@ -50,14 +50,14 @@ Se cambia **por kilometraje o por tiempo**, lo que llegue primero:
 
 > ¿Cuántos colores de refrigerante hay? R: **7**: púrpura, verde, rojo, naranja, amarillo, azul y uno más (?). (Mecánica: no es un artículo del CNT)
 
-### 3. Llantas
+### Llantas
 
 | Qué revisar | Cómo |
 | --- | --- |
 | Desgaste | Con las **guías (testigos) de desgaste** del labrado o con un **profundímetro**. |
 | Presión de aire (PSI) | La indicada en el **manual de instrucciones**, en el **lateral de la llanta** o, en la moto, en la **tijera**. |
 
-### 4. Luces
+### Luces
 
 El carro tiene **10 luces adelante** y **10 atrás**:
 
@@ -70,11 +70,11 @@ El carro tiene **10 luces adelante** y **10 atrás**:
 | Tablero de instrumentos | 1 | Parqueo | 2 |
 | Luz interior (techo) | 1 | Tercer stop | 1 |
 
-### 5. Kit de prevención y seguridad vial
+### Kit de prevención y seguridad vial
 
 Es el equipo de carretera del **art. 30** (ver clase de infracciones; no llevarlo es infracción C11).
 
-### 6. Testigos del tablero
+### Testigos del tablero
 
 El color del testigo dice qué tan grave es:
 
