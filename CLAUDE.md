@@ -8,7 +8,7 @@ Study notes for the theory classes of a driving licence course. The owner pastes
 2. Each class is one Markdown file `src/content/lessons/YYYY-MM-DD-slug.md` with frontmatter `title`, `topic` and `date` (the class date written in the notes). Use `###` for each sub-theme: those headings feed the side menu. Topics are grouped on the page in order of their first class; reuse the exact `topic` string to add to an existing topic.
 3. Numbering ("Clase N") is automatic, by date; never number by hand.
    Extra exam topics not taught in class go in `src/content/lessons/otros-N-slug.md` without `date`, under topic "Otros temas que pueden salir"; they render last with a "Complemento" badge.
-4. Anything the teacher said will be in the exam goes in a blockquote (`> question and answer`) inside the lesson where it was mentioned; it renders as "Pregunta de examen".
+4. Anything the teacher said will be in the exam goes in a blockquote (`> question and answer`) inside the lesson where it was mentioned; it renders as "Pregunta de examen". Also add it to `src/pages/preguntas.astro` (the exam questions sheet): `fixed` for questions confirmed to be in the exam, `possible` for the rest.
 5. Run `pnpm lint:fix && pnpm build` before committing.
 6. Commit after each update. Ask the owner before pushing to `origin main` (pushing deploys to Vercel).
 
