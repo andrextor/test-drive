@@ -26,3 +26,5 @@ Las que el profesor dijo en clase que pueden salir.
 > 4\. ¿Qué pasa si el conductor se niega a la prueba de alcohol? R: Comparendo directo de **grado 3** (la sanción más alta). (Art. 152 CNT, modificado por la Ley 1696 de 2013)
 
 > 5\. ¿Qué pasa con la multa si el infractor huye? R: **Se duplica** (**art. 130**).
+
+> 6\. ¿Cuántos colores de refrigerante hay? R: **7**: púrpura, verde, rojo, naranja, amarillo, azul y uno más (?). (Mecánica: no es un artículo del CNT)

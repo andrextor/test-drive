@@ -48,6 +48,8 @@ Se cambia **por kilometraje o por tiempo**, lo que llegue primero:
 
 **Colores del refrigerante (7):** púrpura, verde, rojo, naranja, amarillo, azul y un séptimo que no se alcanza a leer en las notas (?).
 
+> ¿Cuántos colores de refrigerante hay? R: **7**: púrpura, verde, rojo, naranja, amarillo, azul y uno más (?). (Mecánica: no es un artículo del CNT)
+
 ### 3. Llantas
 
 | Qué revisar | Cómo |
