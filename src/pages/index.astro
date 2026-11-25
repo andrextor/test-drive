@@ -29,9 +29,10 @@ const entries = (await getCollection('lessons')).sort(
 const lessons = await Promise.all(
   entries.map(async (entry, index) => {
     const { Content, headings } = await render(entry);
-    const label = entry.data.date ? `Clase ${index + 1}` : 'Complemento';
+    const isExam = entry.data.topic === 'Preguntas de examen';
+    const label = entry.data.date ? `Clase ${index + 1}` : isExam ? 'Examen' : 'Complemento';
     const id = entry.data.date ? `clase-${index + 1}` : `complemento-${entry.id}`;
-    return { entry, Content, label, id, headings };
+    return { entry, Content, label, id, headings, isExam };
   }),
 );
 
@@ -124,7 +125,7 @@ const toc: TocSection[] = sections.map((section) => ({
         </form>
 
         <a
-          href="/preguntas"
+          href="#tema-preguntas-de-examen"
           class="shrink-0 rounded-xl bg-amber-500 px-3.5 py-2.5 text-center text-sm font-semibold text-stone-950 shadow-sm hover:bg-amber-400"
         >
           Preguntas de examen
@@ -158,7 +159,7 @@ const toc: TocSection[] = sections.map((section) => ({
                 <span class="h-6 w-1.5 rounded-full bg-amber-500" aria-hidden="true" />
                 {section.topic}
               </h2>
-              {section.items.map(({ entry, Content, label, id }) => (
+              {section.items.map(({ entry, Content, label, id, isExam }) => (
                 <article
                   id={id}
                   class="mb-6 scroll-mt-36 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:scroll-mt-24 sm:p-8 dark:border-stone-800 dark:bg-stone-900"
@@ -180,7 +181,7 @@ const toc: TocSection[] = sections.map((section) => ({
                           {formatDate.format(entry.data.date)}
                         </time>
                       ) : (
-                        <span class="text-stone-500">No visto en clase: verificar con el profesor</span>
+                        !isExam && <span class="text-stone-500">No visto en clase: verificar con el profesor</span>
                       )}
                     </div>
                     <h3 class="text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl dark:text-stone-50">
