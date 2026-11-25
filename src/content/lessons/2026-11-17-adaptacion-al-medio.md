@@ -31,7 +31,7 @@ date: 2026-11-17
 | 1985 | Primer manual de señalización de Colombia |
 | 2015 | Resolución 1885: Manual de Señalización Vial vigente |
 
-> ¿Cuándo nacieron las leyes de tránsito? R: 1974, en Viena (Austria). (?) La Convención de Viena sobre señalización vial es de 1968; confirmar el año con el profesor.
+> ¿Cuándo nacieron las leyes de tránsito? R: 1974, en Viena (Austria). (?) La Convención de Viena sobre señalización vial es de 1968; confirmar el año con el profesor. (Convención de Viena: no es un artículo del CNT)
 
 ### Qué es una señal de tránsito
 

@@ -21,7 +21,7 @@ Conducir bajo el efecto de **sustancias psicoactivas** (drogas, algunos medicame
 
 </div>
 
-> Si el conductor **se niega a la prueba**, el agente le hace directamente el **comparendo de grado 3** (la sanción más alta).
+> Si el conductor **se niega a la prueba**, el agente le hace directamente el **comparendo de grado 3** (la sanción más alta). (Art. 152 CNT, modificado por la Ley 1696 de 2013)
 
 ### Tipos de medición
 

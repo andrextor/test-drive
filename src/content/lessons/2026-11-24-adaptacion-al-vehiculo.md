@@ -104,8 +104,8 @@ En las notas también aparecen los colores púrpura, naranja y azul (?).
 
 Estas tres salen seguro en el examen:
 
-> ¿A cuánto equivalen las multas tipo C (C2)? R: **15 SMDLV**, valor **$604.147**.
+> ¿A cuánto equivalen las multas tipo C (C2)? R: **15 SMDLV**, valor **$604.147**. (Art. 131, Ley 769 de 2002)
 
-> El Código Nacional de Tránsito es la… R: **Ley 769 de 2002**.
+> El Código Nacional de Tránsito es la… R: **Ley 769 de 2002** (art. 1: ámbito de aplicación).
 
-> ¿Qué NO es obligatorio (es opcional) en el kit de carretera? R: **Chaleco o prenda reflectiva**.
+> ¿Qué NO es obligatorio (es opcional) en el kit de carretera? R: **Chaleco o prenda reflectiva**; no está en la lista del **art. 30**.

@@ -8,13 +8,17 @@ type Question = { question: string; answer: string; source: string };
 const fixed: Question[] = [
   {
     question: '¿A cuánto equivalen las multas tipo C (C2)?',
-    answer: '15 SMDLV, valor $604.147.',
+    answer: '15 SMDLV, valor $604.147. (Art. 131, Ley 769 de 2002)',
     source: 'Clase 24 nov.',
   },
-  { question: 'El Código Nacional de Tránsito es la…', answer: 'Ley 769 de 2002.', source: 'Clase 24 nov.' },
+  {
+    question: 'El Código Nacional de Tránsito es la…',
+    answer: 'Ley 769 de 2002 (art. 1: ámbito de aplicación).',
+    source: 'Clase 24 nov.',
+  },
   {
     question: '¿Qué NO es obligatorio (es opcional) en el kit de carretera?',
-    answer: 'Chaleco o prenda reflectiva.',
+    answer: 'Chaleco o prenda reflectiva; no está en la lista del art. 30.',
     source: 'Clase 24 nov.',
   },
 ];
@@ -22,22 +26,24 @@ const fixed: Question[] = [
 const possible: Question[] = [
   {
     question: '¿Cuándo nacieron las leyes de tránsito?',
-    answer: '1974, en Viena (Austria). (?) La Convención de Viena es de 1968: confirmar.',
+    answer:
+      '1974, en Viena (Austria). (?) La Convención de Viena es de 1968: confirmar. (Convención de Viena: no es un artículo del CNT)',
     source: 'Adaptación al medio',
   },
   {
     question: '¿Qué artículo del Código Nacional de Tránsito trata las señales luminosas (semáforos)?',
-    answer: 'Artículo 118.',
+    answer: 'Art. 118 del CNT.',
     source: 'Adaptación al medio',
   },
   {
     question: 'Art. 67: ¿a cuántos metros de la esquina se señaliza un giro con la direccional?',
-    answer: '30 m en vías urbanas y 60 m en vías rápidas.',
+    answer: '30 m en vías urbanas y 60 m en vías rápidas (art. 67).',
     source: 'Adaptación al medio',
   },
   {
     question: '¿Qué pasa si el conductor se niega a la prueba de alcohol?',
-    answer: 'El agente le hace directamente el comparendo de grado 3 (la sanción más alta).',
+    answer:
+      'El agente le hace directamente el comparendo de grado 3 (la sanción más alta). (Art. 152 CNT, modificado por la Ley 1696 de 2013)',
     source: 'Embriaguez y sustancias',
   },
   {

@@ -43,22 +43,22 @@ Las multas se ponen según la **gravedad** de la infracción y el peligro para p
 
 ### Tipos de multa (art. 131)
 
-| Tipo | Valor | A quién |
-| --- | --- | --- |
-| A | 4 SMDLV | Vehículos **no automotores** (bicicletas, tracción animal) |
-| B | 8 SMDLV | Conductor y/o propietario de vehículo automotor |
-| C | 15 SMDLV | Conductor y/o propietario de vehículo automotor |
-| D | 30 SMDLV | Conductor y/o propietario de vehículo automotor |
-| E | 45 SMDLV | Conductor y/o propietario de vehículo automotor |
-| F | Art. 152 | Alcohol o sustancias psicoactivas |
+| Tipo | Valor | En pesos (?) | A quién |
+| --- | --- | --- | --- |
+| A | 4 SMDLV | $161.106 | Vehículos **no automotores** (bicicletas, tracción animal) |
+| B | 8 SMDLV | $322.212 | Conductor y/o propietario de vehículo automotor |
+| C | 15 SMDLV | $604.147 | Conductor y/o propietario de vehículo automotor |
+| D | 30 SMDLV | $1.208.294 | Conductor y/o propietario de vehículo automotor |
+| E | 45 SMDLV | $1.812.441 | Conductor y/o propietario de vehículo automotor |
+| F | Art. 152 | Según el grado | Alcohol o sustancias psicoactivas |
 
 <div class="tip">
 
-**Truco:** A 4, B 8, C 15, D 30, E 45. "Inmov." = además se inmoviliza el vehículo.
+**Truco:** A 4, B 8, C 15, D 30, E 45. Pesos: la guía da **C = $604.147**; los demás se calcularon en proporción (1 SMDLV ≈ $40.276) (?). "Inmov." = además se inmoviliza el vehículo.
 
 </div>
 
-### Infracciones tipo A (4 SMDLV)
+### Infracciones tipo A (4 SMDLV, $161.106)
 
 | Código | Infracción |
 | --- | --- |
@@ -75,7 +75,7 @@ Las multas se ponen según la **gravedad** de la infracción y el peligro para p
 | A11 | Por vías rápidas (autopistas, arterias). Inmov. |
 | A12 | Prestar servicio público. Inmov. 5, 20 y 40 días. |
 
-### Infracciones tipo B (8 SMDLV)
+### Infracciones tipo B (8 SMDLV, $322.212)
 
 | Código | Infracción |
 | --- | --- |
@@ -103,7 +103,7 @@ Las multas se ponen según la **gravedad** de la infracción y el peligro para p
 | B22 | **Menores de 10 años** en el asiento delantero. |
 | B23 | Sonido por encima de los decibeles o pantallas adelante en movimiento. |
 
-### Infracciones tipo C (15 SMDLV)
+### Infracciones tipo C (15 SMDLV, $604.147)
 
 | Código | Infracción |
 | --- | --- |
@@ -147,7 +147,7 @@ Las multas se ponen según la **gravedad** de la infracción y el peligro para p
 | C38 | **Celular** sin manos libres. |
 | C39 | Violar las reglas de estacionamiento (art. 77). |
 
-### Infracciones tipo D (30 SMDLV)
+### Infracciones tipo D (30 SMDLV, $1.208.294)
 
 | Código | Infracción |
 | --- | --- |
@@ -173,7 +173,7 @@ Las multas se ponen según la **gravedad** de la infracción y el peligro para p
 
 </div>
 
-### Infracciones tipo E (45 SMDLV)
+### Infracciones tipo E (45 SMDLV, $1.812.441)
 
 | Código | Infracción |
 | --- | --- |
