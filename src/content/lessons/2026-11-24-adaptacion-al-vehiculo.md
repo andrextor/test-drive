@@ -89,15 +89,15 @@ En las notas también aparecen los colores púrpura, naranja y azul (?).
 ### Antes de arrancar
 
 - Ajustar los **espejos**.
-- Se ajusta el centro (?).
+- Ajustar el **asiento**.
 
 ### Adaptación a la moto
 
 | Lado izquierdo | Lado derecho |
 | --- | --- |
-| Soporte lateral (?) | Reposapié derecho |
+| Soporte lateral izquierdo | Reposapié derecho |
 | Reposapié | Freno derecho |
-| Selector de cambios | Carburador (?) |
+| Selector de marchas | Carburador (?) |
 | | Cúpula / cápsula (?) |
 
 ### Preguntas de examen
@@ -108,4 +108,4 @@ Estas tres salen seguro en el examen:
 
 > El Código Nacional de Tránsito es la… R: **Ley 769 de 2002**.
 
-> ¿Qué es obligatorio para el motociclista? (?) R: **Chaleco o prenda reflectiva**.
+> ¿Qué es obligatorio para el parrillero? R: **Chaleco o prenda reflectiva**.
