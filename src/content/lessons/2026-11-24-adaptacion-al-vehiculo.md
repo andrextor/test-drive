@@ -41,10 +41,12 @@ Se cambia **por kilometraje o por tiempo**, lo que llegue primero:
 
 | Fluido | Qué revisar |
 | --- | --- |
-| Refrigerante | Nivel del depósito; en las notas dice "agua" (?). |
+| Refrigerante | Nivel del depósito. Viene en **7 colores** (ver abajo). |
 | Líquido de frenos | Entre el **tope máximo y el mínimo**; el depósito lleva un **pictograma**. Carro: cambio a los **10.000 km** (?). |
 | Limpiaparabrisas | Agua. |
 | Hidráulico (dirección) (?) | Se cambia según el **tiempo y el uso**. |
+
+**Colores del refrigerante (7):** púrpura, verde, rojo, naranja, amarillo, azul y un séptimo que no se alcanza a leer en las notas (?).
 
 ### 3. Llantas
 
@@ -55,7 +57,16 @@ Se cambia **por kilometraje o por tiempo**, lo que llegue primero:
 
 ### 4. Luces
 
-Carro: **10 adelante** y **10 atrás** (?).
+El carro tiene **10 luces adelante** y **10 atrás**:
+
+| Adelante (10) | Cant. | Atrás (10) | Cant. |
+| --- | --- | --- | --- |
+| Farola principal: altas | 2 | Luz de placa | 1 |
+| Farola principal: bajas | 2 | Stop | 2 |
+| Direccionales | 2 | Reversa | 2 |
+| Parqueo | 2 | Direccionales | 2 |
+| Tablero de instrumentos | 1 | Parqueo | 2 |
+| Luz interior (techo) | 1 | Tercer stop | 1 |
 
 ### 5. Kit de prevención y seguridad vial
 
@@ -70,8 +81,6 @@ El color del testigo dice qué tan grave es:
 | Verde | Aviso: un sistema está funcionando. |
 | Rojo | Advertencia / alarma. |
 | Amarillo | Señales / información. |
-
-En las notas también aparecen los colores púrpura, naranja y azul (?).
 
 | Testigo | Qué indica |
 | --- | --- |
